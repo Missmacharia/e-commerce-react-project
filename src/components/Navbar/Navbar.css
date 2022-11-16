@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400&family=Montserrat&family=Poppins&family=Rubik&family=Source+Sans+Pro:wght@300&display=swap');
+.links  {
+    background-color: rgb(106, 13, 146);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /* border-radius: 5p */
+    font-family: 'Montserrat', sans-serif;
+   
+}
+
+.my_links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+Link{
+    color: white;
+    text-decoration: none;
+}

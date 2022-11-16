@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+A simple E-commerce 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
 
-## Available Scripts
+Use several slices 
 
-In the project directory, you can run:
+Use firebase as your backend / database 
 
-### `npm start`
+Use Redux/toolkit 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Add routing. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ 
 
-### `npm test`
+Functionality: 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The landing page should have a header with a title and a login form after clicking on the login button log the user to the system  
 
-### `npm run build`
+First display all the product (from firebase) , also update the header with links (products, about contact, logout – these links are only visible for a logged in user) 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On logout take the user back to the landing page. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Adding a New Product 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Be able to add a product (name, description, price, and image URL, discount rate), data should be sent to firebase. 
 
-### `npm run eject`
+ 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Cart Functionality 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Be able to add a product to the cart, on add again increase the quantity 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Be able to calculate the total amount of items in cart  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Be able to reduce the quantity of an item in cart if quantity is greater than one else if one remove it from cart. 
 
-## Learn More
+Be able to remove an item  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Important  
 
-### Code Splitting
+ Complete the work by Friday 11:00 A.M submit a link ( make sure its completed and submitted )  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Use redux toolkit to manage all the state in your application 
 
-### Analyzing the Bundle Size
+Work on a great user Interface 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Use custom CSS no libraries 
 
-### Making a Progressive Web App
+Add at least four hooks 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Add validation to Add product form (don’t use required) 
