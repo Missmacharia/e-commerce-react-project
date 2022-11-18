@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar/Navbar";
-import RoutesCom from "./Routes/RoutesCom";
+import Navbar from "../Navbar/Navbar";
+import RoutesCom from "./RoutesCom";
 
 const Service = () => {
   return (

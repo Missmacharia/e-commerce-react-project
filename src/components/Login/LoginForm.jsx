@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LoginForm.css"
 import { Link } from "react-router-dom";
 
 import "./LoginForm.css";
@@ -16,7 +17,7 @@ const LoginForm = () => {
     }
   return (
     <div className="myForm">
-      <form>
+      <form className="products_form">
         <input type="text"
          name="firstName"
           placeholder="Yvonne"

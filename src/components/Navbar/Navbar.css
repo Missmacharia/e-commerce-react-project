@@ -17,8 +17,22 @@
     gap: 20px;
     text-decoration: none;
 }
-
-Link{
+.my_links> a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     color: white;
     text-decoration: none;
+}
+
+.logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.icon{
+    color: white;
 }

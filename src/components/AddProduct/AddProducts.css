@@ -1,0 +1,22 @@
+.myProductsForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.product_form {
+    background-color: #6A0D92;
+    border-radius: 10px;
+    height: 250px;
+    width: 300px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add_products {
+    display: flex;
+}

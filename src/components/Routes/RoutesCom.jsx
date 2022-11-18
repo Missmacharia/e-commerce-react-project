@@ -1,14 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Products from "../Products/Products";
 import LoginForm from "../Login/LoginForm";
-import Product from "../Products/Product";
+import Home from "../Home/Home";
 
 const RoutesCom = () => {
   return (
     <>
       <Routes>
           <Route path="/" element={<LoginForm />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/home" element ={ <Home /> } />
+          <Route path="/Products" element= {<Products /> } /> 
       </Routes>
     </>
   );

@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
 }
-form{
+.products_form{
    background-color: #6A0D92;
    border-radius: 10px;
    height: 250px;
