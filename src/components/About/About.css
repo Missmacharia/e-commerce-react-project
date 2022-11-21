@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400&family=Montserrat&family=Poppins&family=Rubik&family=Source+Sans+Pro:wght@300&display=swap');
+.aboutUsImages> img{
+   display: flex;
+   border-radius: 5px;
+}
+
+.aboutUs{
+    background-color: rgb(245, 183, 139);
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUsDetails{
+    font-family: 'Montserrat', sans-serif;
+}

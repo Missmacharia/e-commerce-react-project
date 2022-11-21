@@ -1,6 +1,8 @@
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { firestoreDb } from "../firebase";
+import { addDoc, collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { firestoreDb, storage } from "../firebase";
 
 
 
@@ -45,10 +47,46 @@ export const addProducts = createAsyncThunk(
             
         }
     }
+);
+
+export const upLoadImagesAction  = createAsyncThunk(
+    "upload/images", 
+    async(imageUpload, thunkAPI)=>{
+        try {
+            if(imageUpload=== null) return
+            const imageRef = ref(storage, `images/${imageUpload.name}`)
+            uploadBytes(imageRef, imageUpload)
+            return {
+                imageUpload
+            }
+        } catch (error) {
+
+            thunkAPI.rejectWithValue({
+                error:error.message
+            })
+            
+        }
+    }
+);
+
+export const deleteProductsAction = createAsyncThunk(
+    "delete/products",
+    async(deleteProducts, thunkAPI)=>{
+        try {
+            const productsRef= doc(firestoreDb, "products")
+            deleteDoc(productsRef, deleteProducts)
+            return "delete successfully"
+        } catch (error) {
+            thunkAPI.rejectWithValue({
+                error:error.message
+            })
+        }
+    }
 )
 
 const initialState = {
     products:[],
+    images:[],
     loading: false,
     adding: false,
 }
@@ -65,14 +103,28 @@ const productsSlice = createSlice({
             state.products = action.payload.products;
             state.loading = false;
         });
-
         builder.addCase(addProducts.pending, (state, action)=>{
             state.loading = true;
         });
 
         builder.addCase(addProducts.fulfilled, (state, action)=>{
             state.loading = false
+        });
+        builder.addCase(deleteProductsAction.pending, (state, action)=>{
+            state.loading= true;
+        });
+        builder.addCase(deleteProductsAction.fulfilled, (state, action)=>{
+            state.products = action.payload.products
+            state.loading= false;
         })
+        builder.addCase(upLoadImagesAction.pending, (state, action)=>{
+            state.loading = true
+        });
+        builder.addCase(upLoadImagesAction.fulfilled, (state, action)=>{
+            state.images= action.payload.images;
+            state.loading = false
+        });
+        
     }
 })
 

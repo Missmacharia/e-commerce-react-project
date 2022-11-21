@@ -28,7 +28,7 @@ const Products = () => {
         addProducts={addProducts}
         products={products}
         setformProducts= {setformProducts}
-      />
+      />npm
     </div>
   );
 };

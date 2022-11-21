@@ -1,24 +1,21 @@
-const { createSlice } = require("@reduxjs/toolkit")
+import { createSlice } from "@reduxjs/toolkit";
+import Navbar from "../Navbar/Navbar";
 
 
-
-const intialState ={
-    count: 0
-}
 
 const counterSlice = createSlice({
-    name: "counter", 
-    intialState,
-    reducers:{
-        addCartIncreament: (state, action)=>{
-            state.count = action.payload;
-            if(addCartIncreament) {
-                return{...state, count:state.count+1}
-            }
+    name: Navbar,
+    initialState: {
+        count : 0
+    },
+    reducers: {
+        increment: (state)=>{
+            state.count += 1
+        },
+        decrement: (state)=>{
+            state.count -= 1
         }
     }
 })
-
-export const {addCartIncreament} = counterSlice.actions;
 
 export default counterSlice.reducer

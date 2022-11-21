@@ -6,7 +6,8 @@
     align-items: center;
 }
 .products_form{
-   background-color: #6A0D92;
+   /* background-color: #4d3a00; */
+   background-color: rgb(70, 30, 1);
    border-radius: 10px;
    height: 250px;
    width: 300px;
@@ -26,12 +27,17 @@ button{
     padding: 10px 50px 10px 50px;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 70px;
     margin: auto;
     background-color: orange;
-    color: white;
-    text-decoration: none;
     border: none;
     border-radius: 10px;
+}
 
+button > a{
+    text-decoration: none;
+    color: white;
 }

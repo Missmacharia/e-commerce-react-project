@@ -1,29 +1,54 @@
 import React, { useState } from "react";
-import "./LoginForm.css"
+import "./LoginForm.css";
 import { Link } from "react-router-dom";
 
 import "./LoginForm.css";
 const DEFAULT_FORM = {
-    firstName:"",
-    userName:"",
-    email: "",
-    address:""
-}
+  firstName: "",
+  userName: "",
+  email: "",
+  address: "",
+};
 const LoginForm = () => {
-    const [formUser, setFormUser]= useState(DEFAULT_FORM)
+  const [formUser, setFormUser] = useState(DEFAULT_FORM);
+  const { error, setError } = useState("");
 
-    const handleChange=(e)=>{
-        setFormUser((prev)=>({...prev, [e.target.name]:e.target.value }))
+  const handleChange = (e) => {
+    setFormUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = () => {
+    setError("")
+    //validification of inputs
+    if (formUser.firstName === "") {
+      setError("Please fill in your name");
+      return;
     }
+    if (formUser.userName === "") {
+      setError("Please fill in your user name");
+      return;
+    }
+    if (formUser.email === "") {
+      setError("Email is required");
+      return;
+    }
+    if (formUser.address === "") {
+      setError("please fill in your address");
+      return;
+    }
+  };
+
   return (
     <div className="myForm">
       <form className="products_form">
-        <input type="text"
-         name="firstName"
+        {error}
+        <input
+          type="text"
+          name="firstName"
           placeholder="Yvonne"
-           value={formUser.firstName}
-           onChange={handleChange}
-            />
+          value={formUser.firstName}
+          onChange={handleChange}
+        />
         <input
           type="text"
           name="userName"
@@ -42,15 +67,14 @@ const LoginForm = () => {
           type="text"
           name="address"
           placeholder="nyeri town"
-   
-  
-    value={formUser.address}
+          value={formUser.address}
           onChange={handleChange}
         />
-        
-        <button><Link to="product"> Submit </Link></button>
+
+        <button onClick={handleSubmit}>
+          <Link to="product"> Submit </Link>
+        </button>
       </form>
-    
     </div>
   );
 };

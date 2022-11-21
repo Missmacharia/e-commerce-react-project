@@ -1,9 +1,13 @@
 import React from "react";
 import "./Home.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import cloth1 from "../../Images/WomenImages/cloth1.jpg";
+import { deleteProductsAction } from "../Redux/Products";
 const Product = () => {
-  const { products, loading } = useSelector((state) => state.products);
+  const dispatch =useDispatch()
+  const { products } = useSelector((state) => state.products);
+ 
+  // const {images}= useSelector((state)=> state.images)
   return (
     <div className="product_home">
       {products?.map((products) => (
@@ -11,12 +15,12 @@ const Product = () => {
           <div className="product_img">
             <img src={cloth1} alt="" />
           </div>
+          <p>{products.images} </p>
           <h1>{products.produtName} </h1>
           <p>{products.description} </p>
           <p>{products.price} </p>
           <h3>{products.discountPrice} </h3>
-          
-          <button>Delete</button>
+          <button onClick={dispatch(deleteProductsAction(products))} >Delete</button>
         </div>
       ))}
     </div>
