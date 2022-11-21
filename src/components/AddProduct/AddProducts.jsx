@@ -20,18 +20,26 @@ const AddProducts = ({ formProducts,  setformProducts }) => {
     // setOwner(DEFAULT_OWNER_FORM)
   };
 
-  const [imagesUpload, setImagesUpload]= useState([])
-
-  
 
   return (
     <div className="myProductsForm">
       <form className="product_form">
-          <input type="file" onChange={(e)=>
+          {/* <input type="file" onChange={(e)=>
             {setImagesUpload(e.target.files[0])}} />
-          <p onClick={dispatch(upLoadImagesAction(imagesUpload))} className="icon">
+          <p onClick={()=>{
+            console.log('uploading');
+            dispatch(upLoadImagesAction(imagesUpload))
+          }} className="icon">
             <BsCamera />
-          </p>
+          </p> */}
+         
+        <input
+          type="text"
+          name="produtImage"
+          placeholder="produtImage"
+          value={formProducts.produtImage}
+          onChange={handleChange}
+        />
         <input
           type="text"
           name="produtName"

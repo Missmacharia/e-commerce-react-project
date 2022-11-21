@@ -1,7 +1,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { ref, uploadBytes ,getDownloadURL  } from "firebase/storage";
 import { firestoreDb, storage } from "../firebase";
 
 
@@ -49,15 +49,35 @@ export const addProducts = createAsyncThunk(
     }
 );
 
+export const deleteProductsAction = createAsyncThunk(
+    "delete/products", 
+    async(deletedProduct, thunkAPI) =>{
+        console.log(deletedProduct);
+        try {
+            const productRef = doc(firestoreDb, "products", deletedProduct.id)
+            await deleteDoc(productRef,deletedProduct)
+            return 
+        } catch (error) {
+            thunkAPI.rejectWithValue({
+                error: error.message
+            })
+            
+        }
+    }
+)
+
 export const upLoadImagesAction  = createAsyncThunk(
     "upload/images", 
     async(imageUpload, thunkAPI)=>{
         try {
             if(imageUpload=== null) return
             const imageRef = ref(storage, `images/${imageUpload.name}`)
-            uploadBytes(imageRef, imageUpload)
+            const task = uploadBytes(imageRef, imageUpload).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+              });
             return {
                 imageUpload
+                
             }
         } catch (error) {
 
@@ -69,20 +89,8 @@ export const upLoadImagesAction  = createAsyncThunk(
     }
 );
 
-export const deleteProductsAction = createAsyncThunk(
-    "delete/products",
-    async(deleteProducts, thunkAPI)=>{
-        try {
-            const productsRef= doc(firestoreDb, "products")
-            deleteDoc(productsRef, deleteProducts)
-            return "delete successfully"
-        } catch (error) {
-            thunkAPI.rejectWithValue({
-                error:error.message
-            })
-        }
-    }
-)
+
+
 
 const initialState = {
     products:[],
@@ -121,7 +129,6 @@ const productsSlice = createSlice({
             state.loading = true
         });
         builder.addCase(upLoadImagesAction.fulfilled, (state, action)=>{
-            state.images= action.payload.images;
             state.loading = false
         });
         
