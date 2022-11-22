@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { addProducts, fetchProducts, upLoadImagesAction } from "../Redux/Products";
+import { addProducts, fetchProducts } from "../Redux/Products";
 import "./AddProducts.css";
-import { BsCamera } from "react-icons/bs";
+// import { BsCamera } from "react-icons/bs";
 import { increment } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const AddProducts = ({ formProducts,  setformProducts }) => {
   const dispatch = useDispatch();
@@ -69,8 +70,8 @@ const AddProducts = ({ formProducts,  setformProducts }) => {
           value={formProducts.discountPrice}
           onChange={handleChange}
         />
-        <button className="add_products" onClick={handleClick}>
-          Add Products
+        <button className="add_products" onClick={handleClick} > 
+        <Link to="/home" >Add Products</Link>
         </button>
       </form>
     </div>

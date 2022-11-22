@@ -9,13 +9,15 @@ const counterSlice = createSlice({
         count : 0
     },
     reducers: {
-        increment: (state)=>{
+        AddCartAction: (state)=>{
             state.count += 1
         },
-        decrement: (state)=>{
+        DecreaseCartAction: (state)=>{
             state.count -= 1
         }
     }
 })
+
+export const {AddCartAction, DecreaseCartAction} = counterSlice.actions
 
 export default counterSlice.reducer

@@ -5,6 +5,7 @@ import LoginForm from "../Login/LoginForm";
 import Home from "../Home/Home";
 import About from "../About/About";
 import Contacts from "../Contacts/Contacts";
+import Cart from "../cart/Cart";
 
 const RoutesCom = () => {
   return (
@@ -15,6 +16,7 @@ const RoutesCom = () => {
           <Route path="/Products" element= {<Products /> } /> 
           <Route path="/about" element= {<About /> } /> 
           <Route path="/contacts" element= {<Contacts /> } /> 
+          <Route path="/cart" element= {< Cart /> } /> 
       </Routes>
     </>
   );

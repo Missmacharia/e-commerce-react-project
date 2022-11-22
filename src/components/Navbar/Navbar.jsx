@@ -20,7 +20,7 @@ const Navbar = () => {
      
       <div className="logout">
         <div className="icon">
-        <FiShoppingCart /> {count}
+          <Link to= "/cart" className="cart" ><FiShoppingCart /> {count}</Link>
         </div>
         <button>
           <Link to="/">Log Out</Link>
