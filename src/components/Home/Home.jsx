@@ -1,8 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProductsAction, fetchProducts } from "../Redux/Products";
-import { AddCartAction } from "../Redux/counter";
+import { AddCartAction} from "../Redux/counter";
 import {  addCartProductAction, fetchCartProductsAction } from "../Redux/cart";
 import { Link } from "react-router-dom";
 
@@ -14,20 +13,18 @@ const Product = () => {
 
   // const id = "8FOctsmqXpLPS49SK9HS"
 
-  const handleDelete = (product) => {
-    dispatch(deleteProductsAction(product));
-    dispatch(fetchProducts());
-  };
+ 
   // const handleAddCart =(e)=>{
   //   prompt('product successfully added to cart')
   //   increment()
   // }
   // const {images}= useSelector((state)=> state.images)
 
-  const handleAddCart = async (cart)=>{
+  const handleAddCart = async (newCartProduct)=>{
     await dispatch(AddCartAction())
+    // await dispatch(IncrementByAmountAction(amount))
     await dispatch(fetchCartProductsAction())
-    dispatch(addCartProductAction())
+    dispatch(addCartProductAction(newCartProduct))
   }
 
   return (
@@ -43,15 +40,7 @@ const Product = () => {
           <p>{product.price} </p>
           <h3>{product.discountPrice} </h3>
           <div className="mybuttons">
-            <button onClick={handleAddCart}> <Link to="/cart" >Add to Cart</Link> </button>
-
-            <button
-              onClick={() => {
-                handleDelete(product);
-              }}
-            >
-              Delete
-            </button>
+            <button onClick={()=> handleAddCart(product)}> <Link to="/cart" >Add to Cart</Link> </button>
           </div>
         </div>
       ))}

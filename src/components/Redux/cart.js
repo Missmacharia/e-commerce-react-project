@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { firestoreDb } from "../firebase";
-
-
-
 
 export const fetchCartProductsAction = createAsyncThunk(
     "fetchCarts/products-one",
@@ -11,13 +8,16 @@ export const fetchCartProductsAction = createAsyncThunk(
         try {
             //getting dat from the firebase
             const cartRef = collection(firestoreDb, "cart")
-            const docsSnap = await getDoc(cartRef)
+            console.log(cartRef)
+            const docsSnap = await getDocs(cartRef)
+            console.log(docsSnap)
             let cart = []
             //converting the sata to readable form and attaching the data to its id
             docsSnap.forEach((doc)=>{
                 const data = doc.data()
                 cart.push({id:doc.id, ...data})
             })
+            
             return{
                 cart
             }
@@ -48,9 +48,29 @@ export const addCartProductAction = createAsyncThunk(
     
 )
 
+export const deleteCartProductsAction = createAsyncThunk(
+    "deleteCard/products",
+    async(deleteCart, thunkAPI)=>{
+        try {
+            const cartRef= doc(firestoreDb, "cart", deleteCart.id)
+            await deleteDoc(cartRef, deleteCart)
+            console.log(deleteCart);
+            return
+        } catch (error) {
+            thunkAPI.rejectWithValue(
+                {
+                    error: error.message
+                }
+            )
+        }
+    }
+)
+
+
 
 const initialState= {
     cart: [],
+    status: "",
     loading: false
 }
 
@@ -73,6 +93,14 @@ const cartSlice= createSlice({
         });
 
         builder.addCase(addCartProductAction.fulfilled, (state, action)=>{
+            state.loading = false
+        })
+        builder.addCase(deleteCartProductsAction.pending, (state, action)=>{
+            state.loading=true 
+        })
+        builder.addCase(deleteCartProductsAction.fulfilled, (state, action)=>{
+            console.log(action)
+            state.cart= action.payload
             state.loading = false
         })
     }

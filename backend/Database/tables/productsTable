@@ -1,0 +1,14 @@
+create table productsTable(
+productID varchar(200),
+productImage varchar(300),
+produtName varchar(50),
+productDescription varchar(300),
+price int,
+discountRate int,
+)
+
+select *from productsTable
+
+insert into productsTable(productID, productImage, produtName, productDescription, price, discountRate)
+values('eqdhwu42mDKQMOQ3', 'https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+'dress', 'made by the house of designers', 500, 20)

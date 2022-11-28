@@ -63,7 +63,7 @@ const AddProducts = ({ formProducts,  setformProducts }) => {
           onChange={handleChange}
         />
         <input type="number" name="price" placeholder="100" value="3232" />
-        <input
+        <inputnnn
           type="number"
           name="discountPrice"
           placeholder="20%"

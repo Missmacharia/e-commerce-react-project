@@ -1,7 +1,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { ref, uploadBytes ,getDownloadURL  } from "firebase/storage";
+import { addDoc, collection, getDocs} from "firebase/firestore";
+import { ref, uploadBytes  } from "firebase/storage";
 import { firestoreDb, storage } from "../firebase";
 
 
@@ -12,6 +12,7 @@ export const fetchProducts = createAsyncThunk(
     async(args, thunkAPI) => {
         try {
             const productsRef = collection(firestoreDb, "products")
+            console.log(productsRef)
             const docsSnap = await getDocs(productsRef)
             let products = []
             docsSnap.forEach((doc)=>{
@@ -49,22 +50,6 @@ export const addProducts = createAsyncThunk(
     }
 );
 
-export const deleteProductsAction = createAsyncThunk(
-    "delete/products", 
-    async(deletedProduct, thunkAPI) =>{
-        console.log(deletedProduct);
-        try {
-            const productRef = doc(firestoreDb, "products", deletedProduct.id)
-            await deleteDoc(productRef,deletedProduct)
-            return 
-        } catch (error) {
-            thunkAPI.rejectWithValue({
-                error: error.message
-            })
-            
-        }
-    }
-)
 
 export const upLoadImagesAction  = createAsyncThunk(
     "upload/images", 
@@ -118,13 +103,6 @@ const productsSlice = createSlice({
         builder.addCase(addProducts.fulfilled, (state, action)=>{
             state.loading = false
         });
-        builder.addCase(deleteProductsAction.pending, (state, action)=>{
-            state.loading= true;
-        });
-        builder.addCase(deleteProductsAction.fulfilled, (state, action)=>{
-            state.products = action.payload.products
-            state.loading= false;
-        })
         builder.addCase(upLoadImagesAction.pending, (state, action)=>{
             state.loading = true
         });

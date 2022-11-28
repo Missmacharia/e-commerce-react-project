@@ -14,10 +14,13 @@ const counterSlice = createSlice({
         },
         DecreaseCartAction: (state)=>{
             state.count -= 1
+        }, 
+        IncrementByAmountAction: (state, action)=>{
+            state.count= action.payload
         }
     }
 })
 
-export const {AddCartAction, DecreaseCartAction} = counterSlice.actions
+export const {AddCartAction, DecreaseCartAction, IncrementByAmountAction} = counterSlice.actions
 
 export default counterSlice.reducer
